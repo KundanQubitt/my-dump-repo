@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# GitHub AppImage Updater
+# This script provides a function to update GitHub-hosted AppImages by comparing the currently installed version with the latest release on GitHub. It can be used to easily keep applications up to date with a single command.
+# Usage: update-app "owner/repo" "asset-name.appimage" <version_field> [extra_flag] ;
+# asset-name: use {VERSION} as placeholder, or omit if static
+# extra_flag: additional flag for the app's command (e.g., "no-sandbox") to get version
+
+update-app() {
+    # Args: <repo> <asset_pattern> <version_field> [extra_flag]
+    # asset_pattern: use {VERSION} as placeholder, or omit if static
+    local curDir=$(pwd)
+    local install_path="/run/media/kundan-qubitt/astra+/Apps/$1"
+    local install_dir="${install_path%/*}"
+    local app_name="${install_dir##*/}"
+    # Current version
+    local curr_version
+    if [ -x "$install_path" ]; then
+    	curr_version=$(readlink "$install_path" 2>/dev/null | grep -oP '\d+\.\d+\.\d+' || echo "0.0.0")
+    elif [ -n "${3}" ]; then
+        curr_version=$("$install_path" ${4:+--$4} --version | head -n1 | awk "{print \$${3:-2}}" | sed 's/v//' || echo "0.0.0")
+    else
+        curr_version="0.0.0"
+    fi
+    # Fetching latest package details
+    local latest_version="$(curl -s "https://api.github.com/repos/$1/releases/latest" | grep tag_name | cut -d '"' -f4 | sed 's/v//')"
+    [ -z "$latest_version" ] && echo "$app_name: Failed to fetch latest version." && return 1
+    # Version comparison
+    local version_newer="$(printf '%s\n' "$curr_version" "$latest_version" | sort -V | head -n1)"
+    echo $'\n'"$app_name:- Current version: $curr_version, Latest version: $latest_version"
+    [ "$version_newer" = "$latest_version" ] && echo "$app_name is already up to date." && return 0
+    # Update
+    local asset="${2/\{VERSION\}/$latest_version}"
+    echo "Updating $app_name..."
+    cd /tmp || return 1
+    curl -LO "https://github.com/$1/releases/latest/download/$asset" && \
+    chmod +x "$asset" && \
+    mkdir -p "$install_dir" && \
+    mv "$asset" "$install_dir/$app_name-$latest_version.appimage" && \
+    ln -sf "$install_dir/$app_name-$latest_version.appimage" "$install_path" \
+    || { echo "$app_name: Update failed."; cd "$curDir"; return 1; }
+    cd "$curDir"
+    echo "$app_name: Successfully updated to $latest_version."$'\n'
+}

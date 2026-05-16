@@ -1,0 +1,12 @@
+alias l='ls -AFli'
+alias lc='ls -ACF'
+
+update-git-app () {
+    update-app "obsidianmd/obsidian-releases" "Obsidian-{VERSION}.AppImage" && \
+    update-app "flameshot-org/flameshot" "Flameshot-{VERSION}-x86_64.AppImage"
+}
+
+alias apt-uur='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && update-git-apps'
+alias ddebi='sudo apt update && sudo mv ~/Downloads/deb/*.deb /tmp/ && sudo apt install /tmp/*.deb'
+
+alias start-resolve='__GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run /opt/resolve/bin/resolve'

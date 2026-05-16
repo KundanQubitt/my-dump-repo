@@ -1,0 +1,724 @@
+
+sudo usermod -aG docker $USER  
+sudo apt update && sudo apt full-upgrade && sudo apt autoremove
+newgrp docker
+
+
+sudo powertop
+upower -i /org/freedesktop/UPower/devices/battery_BAT0
+htop
+top
+nvidia-smi
+glxinfo | grep "OpenGL renderer"
+uname -r
+
+locale  # check for UTF-8
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+locale  # verify settings
+sudo apt-mark auto locales
+sudo apt update && sudo apt install curl -y
+export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F'"' '{print $4}')
+curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo ${UBUNTU_CODENAME:-${VERSION_CODENAME}})_all.deb"
+sudo dpkg -i /tmp/ros2-apt-source.deb
+sudo apt update && sudo apt install ros-dev-tools
+sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt full-upgrade && sudo apt autoremove
+sudo apt install ros-kilted-desktop
+apt search ros
+apt search ros 
+apt search ros | grep ros
+dpkg -l | grep ros2-apt-source
+sudo apt remove --purge ros2-apt-source -y
+sudo apt remove --purge ros-dev-tools -y
+ls /etc/apt/sources.list.d/ | grep ros
+sudo rm /usr/share/keyrings/ros-archive-keyring.gpg
+apt policy | grep ros
+
+modprobe kvm
+modprobe kvm_intel  # Intel processors
+kvm-ok
+lsmod | grep kvm
+ls -al /dev/kvm
+
+sudo usermod -aG kvm $USER
+
+apt search docker
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+sudo apt autoremvoe
+sudo apt autoremove
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl status docker
+docker run hello-world
+sudo usermod -aG docker $USER
+docker run hello-world
+sudo docker run hello-world
+ddebi
+apt search docker | grep docker
+docker-desktop --help
+docker-desktop
+docker
+curl -s https://api.github.com/repos/pulsar-edit/pulsar/releases/latest | grep tag_name
+curl -s https://api.github.com/repos/pulsar-edit/pulsar/releases/latest | grep tag_name | cut -d '"' -f4
+curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep tag_name | cut -d '"' -f4
+cd Apps/
+./nvim/nvim  --version | head -n1
+./pulsar/pulsar  --version | head -n1
+pass --version
+gpg --full-generate-key
+gpg --list-secret-keys --keyid-format=long
+pass init 95EA3CF74A4FD0AC
+pass insert docker-credential-helpers/init
+systemctl --user restart docker-desktop
+pass rm docker-credential-helpers/init
+cat ~/.docker/config.json
+systemctl --user restart docker
+systemctl --user restart docker-desktop
+docker run hello-world
+docker run jazzy-ros-desktop
+apt-uur
+update-nvim1
+apt-uur
+curl -s "https://api.github.com/repos/jgraph/drawio-desktop/releases/latest" | grep tag_name | cut -d '"' -f4 | sed 's/v//'
+cd Apps
+./drawio-x86_64-29.7.9.AppImage --version
+./drawio-x86_64-29.7.9.AppImage --no-sandbox --version
+apt-uur
+echo $HOME
+apt-uur
+l
+lc
+l
+lc
+apt-uur
+cd obsidianmd/
+./obsidian-releases --version
+./obsidian-releases --no-sandbox --version
+./obsidian-releases --no-sandbox --help
+apt-uur
+info -f grub -n
+info -f grub
+sudo update-grub
+sudo editor /etc/default/grub
+sudo update-grub
+sudo editor /etc/default/grub
+sudo update-grub
+sudo editor /etc/default/grub
+sudo update-grub
+echo 80 | sudo tee /sys/class/power_supply/BAT0/charge_control_end_threshold
+apt-uur
+systemctl status NetworkManager
+fastfetch
+.local/share/applications/
+cd .local/share/applications/
+editor neovim.desktop
+editor drawio-desktop.desktop
+editor neovim.desktop
+editor drawio-desktop.desktop
+y
+editor drawio-desktop.desktop
+cd ~
+clear
+sudo install -d /etc/apt/keyrings
+curl -fsSL https://hub.unity3d.com/linux/keys/public | sudo gpg --dearmor -o /etc/apt/keyrings/unityhub.gpg
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/unityhub.gpg] https://hub.unity3d.com/linux/repos/deb stable main" | sudo tee /etc/apt/sources.list.d/unityhub.list
+apt-uur
+sudo apt install unityhub
+ddebi
+docker run -it osrf/ros:jazzy-desktop-full
+docker images
+docker images i
+docker images osrf/ros
+docker run -it osrf/ros:jazzy-desktop-full --name ros2jazzy-tut
+docker run --help
+docker run -i --name ros2jazzy-tut osrf/ros:jazzy-desktop-full
+docker run -it --name ros2jazzy-tut osrf/ros:jazzy-desktop-full
+docker run --help
+hostname -I
+sudo ufw status
+sudo ufw allow 3389/tcp
+sudo ufw status
+sudo ss -tulpn | grep 3389
+hostname -I
+docker
+docker start --help
+docker start -it ros2jazzy-tut
+docker start -i -t ros2jazzy-tut
+docker start -i ros2jazzy-tut
+docker exec --help
+docker start -i ros2jazzy-tut
+docker start ros2jazzy-tut
+docker stop ros2jazzy-tut
+docker start ros2jazzy-tut
+docker stop ros2jazzy-tut
+sudo systemctl hibernate
+swapon
+swapon -a
+swapon -h
+free
+swapon
+lsblk -f
+sudo editor /etc/default/grub
+sudo update-grub
+cat /etc/initramfs-tools/conf.d/resume
+journalctl -b -1 | grep -i hibernate
+clear
+journalctl -b -1 | grep -i hibernate
+swapon --show
+free -h
+cat /sys/power/disk
+cat /sys/power/state
+lsusb
+sudo systemctl hibernate
+dmesg | grep -i "PM:"
+sudo dmesg | grep -i "PM:"
+sudo editor /etc/default/grub
+sudo update-grub
+sudo systemctl hibernate
+sudo editor /etc/default/grub
+sudo update-grub
+sudo systemctl hibernate
+sudo editor /etc/default/grub
+sudo update-grub
+cat /sys/power/state
+docker exec -it ros2jazzy-tut bash
+dokcer debug ro
+docker debug ros2jazzy-tut 
+xhost +local:docker
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+apt-uur
+apt search cuda-toolkit
+apt info cuda-toolkit nvidia-cuda-toolkit
+apt info cuda-toolkit cuda-toolkit-13 cuda-toolkit-13-1
+sudo atp install cuda-toolkit
+sudo apt install cuda-toolkit
+docker start ros2jazzy-tut
+source .bashrc 
+\
+source .bashrc 
+$(__git_ps1 " (%s)")
+git config --global user.email "keshavkundan.dev@gmail.com"
+git config --global user.name "Kundan Qubitt"
+cd ..
+source .bashrc 
+cd Desktop/
+source .bashrc 
+cd ..
+source .bashrc 
+$(__git_ps1 " (%s)")
+source .bashrc 
+echo $USER
+source .bashrc 
+atp
+echo ""
+source .bashrc 
+exit
+atp
+atp
+echo ""
+cd Downloads/
+cd ..
+tlp-stat -s
+apt search tlp
+tlpctl performance
+sudo tlpctl performance
+sudo tlp performance
+sudo tlp ac
+sudo tlp --help
+sudo tlp help
+sudo tlp recalibrate 
+sudo tlp setcharge 80
+sudo tlp recalibrate 
+tlp-stat -s
+sudo tlp ac
+tlp-stat -s
+sudo tlp start
+sudo tlp setcharge 80 BAT0
+sudo tlp setcharge 20 80 BAT0
+prime-run unityhub
+nvidia-smi
+nvcc --version
+vcc --version
+glxinfo | grep "OpenGL renderer"
+prime-run glxinfo | grep "OpenGL renderer"
+sudo nano /usr/local/bin/prime-run
+sudo chmod +x /usr/local/bin/prime-run
+prime-run glxinfo | grep "OpenGL renderer"
+prime-run vulkaninfo | grep deviceName
+sudo apt install vulkan-tools
+prime-run vulkaninfo | grep deviceName
+nvidia-smi
+sudo nano /usr/local/bin/prime-run
+__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia VK_LAYER_NV_optimus=NVIDIA_only \
+__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia VK_LAYER_NV_optimus=NVIDIA_only unityhub
+sudo prime-select on-demand
+sudo prime-select --help
+sudo prime-select on-demand
+sudo tlp setcharge 80 BAT0
+sudo tlp setcharge 20 80 BAT0
+cd Dev
+python3 -m venv .venv
+cd ..
+editor .bashrc
+docker start ros2jazzy-tut
+docker
+
+docker exec
+docker exec --help
+docker exec -it ros2jazzy-tut bash
+docker exec -it ros2jazzy-tut bash
+which python3
+fastfetcch
+fastfetch
+clear
+cd Dev/ros2\ Jazzy/
+l
+docker build -t ros2jazzy-tut .
+docker run ros2jazzy-tut
+docker build --help
+docker run --help
+docker run --help | grep name
+docker rmi ros2jazzy-tut
+docker build -t ROS2-Jazzy-Jalisco .
+docker build -t ros2-jazzy .
+docker build --help
+docker build -t ros2-jazzy .
+docker --help
+docker ps
+docker image
+docker run --name ros2jazzy-tut -v $(pwd):/app
+docker run --name ros2jazzy-tut -v $(pwd):/app ros2-jazzy
+docker run -it --name ros2jazzy-tut -v $(pwd):/app ros2-jazzy
+docker run -it --name ros2jazzy-tut -v $(pwd):/app ros2-jazzy bash
+docker run -it ros2-jazzy bash
+docker ps
+docker run -it ros2-jazzy
+docker run -it ros2-jazzy -v $(pwd):/app
+docker run -it -v $(pwd):/app \ros2-jazzy
+docker run -it -v $(pwd):/app ros2-jazzy
+docker run -v $(pwd):/app -it ros2-jazzy
+apt-uur
+docker run -it --name ros2jazzy-tut ros2-jazzy
+docker start ros2jazzy-tut
+docker stop ros2jazzy-tut 
+docker rm ros2jazzy-tut 
+docker rmi ros2-jazzy:latest 
+docker builder prune
+docker builder prune -a
+docker system prune -a
+docker builder prune -a
+docker build -t ros2-jazzy .
+docker run -it --name ros2jazzy-tut ros2-jazzy
+docker rm ros2jazzy-tut 
+docker rmi ros2-jazzy:latest 
+docker builder prune -a
+docker system prune -a
+docker build -t ros2-jazzy .
+docker run -it --name ros2jazzy-tut ros2-jazzy
+docker exec --help
+docker start ros2jazzy-tut 
+docker exec -it ros2jazzy-tut bash
+apt-uur
+ddebi
+docker start ros2jazzy-tut 
+docker exec -it ros2jazzy-tut bash
+docker exec -it -e DISPLAY=$DISPLAY ros2jazzy-tut bash
+echo $DISPLAY
+ls /tmp/.X11-unix
+xhost +local:docker
+docker exec -it -e DISPLAY=$DISPLAY ros2jazzy-tut bash
+docker run -it   --name ros2jazzy-tut   --network host   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -v /tmp/.X11-unix:/tmp/.X11-unix   ros2-jazzy:latest 
+docker rm -f ros2jazzy-tut
+docker run -it   --name ros2jazzy-tut   --network host   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -v /tmp/.X11-unix:/tmp/.X11-unix   ros2-jazzy:latest 
+apt list --installed | grep docker
+sudo apt remove docker-desktop
+docker context ls
+docker
+which docker
+hash -r
+docker --version
+docker context ls
+docker context use default
+sudo systemctl restart docker
+docker info
+docker rm -f ros2jazzy-tut
+docker ps
+docker list
+docker images
+docker help
+docker container
+docker container ls
+docker start clever_morse 
+docker rm -f clever_morse 
+docker info
+docker context ls
+docker context use desktop-linux
+docker info
+docker context use default
+docker context use desktop-linux
+sudo systemctl restart docker
+docker start 
+docker context use default
+sudo systemctl restart docker
+docker
+docker info
+cd Dev/ros2\ Jazzy/
+docker build -t ros2-jazzy .
+cat ~/.docker/config.json
+rm ~/.docker/config.json
+docker build -t ros2-jazzy .
+xhost +SI:localuser:root
+docker rm -f ros2jazzy-tut 2>/dev/null
+docker run -it   --name ros2jazzy-tut   --network host   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -v /tmp/.X11-unix:/tmp/.X11-unix   ros2-jazzy
+xhost -SI:localuser:root
+docker rm -f ros2jazzy-tut 
+docker run -it   --name ros2jazzy-tut   --network host   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e LIBGL_ALWAYS_SOFTWARE=1   -e XDG_RUNTIME_DIR=/tmp/runtime-root   -v /tmp/.X11-unix:/tmp/.X11-unix   ros2-jazzy
+ls /dev/dri
+docker rm -f ros2jazzy-tut 2>/dev/null
+docker run -it   --name ros2jazzy-tut   --network host   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XDG_RUNTIME_DIR=/tmp/runtime-root   --device /dev/dri   -v /tmp/.X11-unix:/tmp/.X11-unix   ros2-jazzy
+glxinfo | grep "OpenGL renderer"
+prime-select query
+prime-run glxinfo | grep "OpenGL renderer"
+prime-switch --help
+prime-supported 
+docker rm -f ros2jazzy-tut 
+docker run -it   --name ros2jazzy-tut   --network host --device /dev/dri   -v /tmp/.X11-unix:/tmp/.X11-unix   ros2-jazzy
+docker rm -f ros2jazzy-tut 
+docker run -it --name ros2jazzy-tut --network host --device /dev/dri -e DISPLAY=$DISPLAY ros2-jazzy
+docker rm -f ros2jazzy-tut 
+docker run -it --name ros2jazzy-tut --network host --device /dev/dri -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix ros2-jazzy
+docker start ros2jazzy-tut 
+docker exec -it ros2jazzy-tut bash
+docker exec -it -v /tmp/.X11-unix:/tmp/.X11-unix ros2jazzy-tut bash
+docker exec --help
+docker rm -f ros2jazzy-tut 
+docker run -it   --name ros2jazzy-tut   --network host   --device /dev/dri   -e DISPLAY=$DISPLAY   -e XDG_RUNTIME_DIR=/tmp/runtime-root   ros2-jazzy
+docker start ros2jazzy-tut 
+docker exec -it ros2jazzy-tut 
+docker exec -it ros2jazzy-tut bash
+docker rm -f ros2jazzy-tut 
+docker exec -it r2_pathplanning_container bash
+cd Dev/ros2\ Jazzy/
+chmod +x run_bash*
+chmod +x run_docker_gpu.bash 
+./run_docker_gpu.bash
+prime-run ./run_docker_gpu.bash
+sudo rm -rf /tmp/.docker.xauth
+sudo prime-run ./run_docker_gpu.bash
+sudo apt-get update && sudo apt-get install -y --no-install-recommends    ca-certificates    curl    gnupg2
+sudo apt autoremove
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg   && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list |     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' |     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+sudo apt-get update
+export NVIDIA_CONTAINER_TOOLKIT_VERSION=1.19.0-1
+grep -R "apt_hook_ubuntu_virt" /etc/apt/apt.conf.d/
+sudo rm /etc/apt/apt.conf.d/99-ubuntu-virt.conf
+sudo dpkg --configure -a
+sudo apt --fix-broken install
+export NVIDIA_CONTAINER_TOOLKIT_VERSION=1.19.0-1
+sudo nvidia-ctk runtime configure --runtime=docker
+sudo systemctl restart docker
+./run_docker_gpu.bash
+xhost -local:root
+docker images
+docker containers
+docker container ls
+docker rm r2_pathplanning_container 
+docker rmi haiderabbasi333/ros2-pathplanning-course:1 
+exit
+(type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) 	&& sudo mkdir -p -m 755 /etc/apt/keyrings 	&& out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg 	&& cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null 	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg 	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d 	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null 	&& sudo apt update 	&& sudo apt install gh -y
+gh
+ls -al ~/.ssh
+man ls
+clear
+bash
+clear
+docker container ls
+docker container ls -a
+docker ps -a
+git init
+git config --global init.defaultBranch main
+git init
+git --help
+git delete
+git reset
+rm -rf .git
+git init
+git config list
+git config --global init.defaultBranch KundanQubitt
+git config list
+git config --global init.defaultBranch main\
+git config --global init.defaultBranch main
+ssh-keygen -t ed25519 -C "keshavkundan.dev@gmail.com"
+./DaVinci_Resolve_20.3.2_Linux.run 
+sudo apt install [200~libapr1 libaprutil1 libasound2 libglib2.0-0 libglu1-mesa
+sudo apt install libapr1 libaprutil1 libasound2 libglib2.0-0 libglu1-mesa
+sudo apt install libapr1 libaprutil1 libglib2.0-0 libglu1-mesa libasound2t64
+sudo apt-mark auto libglib2.0-0t64 libasound2t64
+sudo apt install libapr1 libaprutil1 libglib2.0-0 libglu1-mesa libasound2t64
+sudo apt-mark auto libglib2.0-0t64 libasound2t64
+sudo apt install libapr1 libaprutil1 libglu1-mesa
+man ls
+ip
+ip address 
+ubuntu-drivers 
+sudo ubuntu-drivers 
+docker ps -a
+resolve
+which resolve
+/opt/resolve/bin/resolve
+cd /opt/resolve/libs
+sudo mkdir -p disabled_libs
+sudo mv libglib-2.0.so* disabled_libs/
+sudo mv libgio-2.0.so* disabled_libs/
+sudo mv libgmodule-2.0.so* disabled_libs/
+sudo mv libgobject-2.0.so* disabled_libs/
+/opt/resolve/bin/resolve
+prime-run resolve
+prime-run /opt/resolve/bin/resolve
+QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run resolve
+apt-uur
+ssh-agent -s
+ls -al ~/.ssh
+ssh-keygen -t ed25519 -C "keshavkundan.dev@gmail.com"
+ls -al ~/.ssh
+ssh-keygen -t ed25519 -C "keshavkundan.dev@gmail.com"
+ssh-agent -s
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+ssh -T git@github.com
+cd Downloads/davinci/
+chmod +x ./DaVinci_Resolve_20.3.2_Linux.run
+sudo ./DaVinci_Resolve_20.3.2_Linux.run -i
+sudo apt update
+sudo apt install -y     libapr1     libaprutil1     libasound2t64     libglib2.0-0t64     libglu1-mesa     dbus-x11     zenity
+sudo ./DaVinci_Resolve_20.3.2_Linux.run -i
+sudo apt install -y     ocl-icd-opencl-dev     libxcb-cursor0     libxkbcommon-x11-0     fakeroot     xorriso
+sudo apt-mark auto libxcb-cursor0 libxkbcommon-x11-0 fakeroot xorriso
+sudo apt-mark auto libasound2t64 libglib2.0-0t64
+sudo SKIP_PACKAGE_CHECK=1 ./DaVinci_Resolve_20.3.2_Linux.run -i
+lspci | grep -E "VGA|3D"
+clinfo | head
+sudo apt install clinfo
+ps aux | grep resolve
+nvidia-smi
+lspci | grep -E "VGA|3D"
+nvidia-smi
+ps aux | grep resolve
+which prime-run
+cat /usr/local/bin/prime-run 
+sudo apt install -y nvidia-opencl-icd clinfo
+sudo nano /usr/local/bin/prime-run
+sudo apt install nvidia-opencl-icd opencl-headers clinfo
+sudo apt install -y     libnvidia-compute-595     opencl-headers     clinfo
+sudo apt-mark auto libnvidia-compute-595
+clinfo | grep -i -E "platform|device|nvidia"
+apt search xwayland
+apt search x11-utils
+sudo mv /opt/resolve/Onboarding         /opt/resolve/Onboarding.bak
+__GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run /opt/resolve/bin/resolve
+cd Downloads/davinci/
+sudo __GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run ./DaVinci_Resolve_Studio_20.3.2_Linux.run -i
+sudo __GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run DaVinci_Resolve_20.3.2_Linux.run -i
+sudo echo $HOME
+sudo __GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run $HOME/Downloads/davinci/DaVinci_Resolve_20.3.2_Linux.run -i
+sudo __GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 SKIP_PACKAGE_CHECK=1 prime-run $HOME/Downloads/davinci/DaVinci_Resolve_20.3.2_Linux.run -i
+start-resolve
+nvidia-smi
+cd /opt/resolve/libs
+sudo mkdir -p disabled_libs
+sudo mv libglib-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgio-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgmodule-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgobject-2.0.so* disabled_libs/ 2>/dev/null
+find /opt/resolve/libs -maxdepth 1 | grep glib
+start-resolve
+apt info nautilus-hide
+sudo apt install nautilus-hide
+ln --help
+sudo tlp setcharge 20 80 BAT0
+sudo nano /etc/systemd/system/tlp-set-charge.service
+sudo systemctl daemon-reload
+sudo systemctl enable tlp-set-charge.service
+sudo systemctl start tlp-set-charge.service
+systemctl status tlp-set-charge.service
+which tlp
+sudo nano /etc/systemd/system/tlp-set-charge.service
+sudo systemctl enable tlp-set-charge.service
+sudo systemctl daemon-reload
+sudo systemctl enable tlp-set-charge.service
+sudo systemctl start tlp-set-charge.service
+systemctl status tlp-set-charge.service
+nautilus -q
+mkdir Unity
+cd Unity/
+mkdir Hub
+cd Hub/
+mkdir Editor
+ln --help
+ln ./Dev/ ~/Documents/Dev
+ls --help
+ln -s ./Dev/ ~/Documents/Dev
+ln -s ./Dev ~/Documents/Dev
+l
+source ~/.bashrc
+l
+pwd
+ln -s ./Dev ~/Documents/Dev
+ln -s /run/media/kundan-qubitt/Qubitt/Dev ~/Documents/Dev
+sudo nano /etc/fstab
+sudo rm -rf timeshift/
+sudo rm -rf lost+found/
+python3 -m venv .venv
+sudo rm -rf timeshift/
+sudo rm -rf lost+found/
+nano prime-run
+nano $(which prime-run)
+cat Dev/_tutorials/random-guides/docker/Dockerfile 
+cat Dev/_tutorials/random-guides/docker/Dockerfile
+cat Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker run --help
+ls /dev/shm
+ls /dev/shm/lttng-ust-wait-8-1000 
+ls /dev/shm/lttng-ust-wait-8-1000/
+ls /dev/shm/lttng-ust-wait-8-1000
+cat/dev/shm/lttng-ust-wait-8-1000
+cat /dev/shm/lttng-ust-wait-8-1000
+xhost
+-xhost
+xhost --help
+man xhost
+xhost -help
+man xhost
+xhost +local:docker
+xhost
+xhost +local:docker
+id
+id -u
+id -g
+docker ps -a
+docker images
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2_ws:/ros2-jazzy_tut   -v ~/.ssh:/root/.ssh:ro   --user $(id -u):$(id -g)   ros2-jazzy
+docker ps -a
+docker --help
+docker rm -rf 177f6eee7b88
+docker rm -f 177f6eee7b88
+docker rmi -f ros2-jazzy:latest
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+
+git config list
+exit
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+cat ~/Dev/_tutorials/ros2\ Jazzy/
+cat ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker run --rm -it osrf/ros:jazzy-desktop-full bash
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+xhost +local:docker
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker rm ros2jazzy-tut 
+docker rm -f ros2jazzy-tut 
+docker --help
+docker rmi --help
+docker rmi ros2-jazzy:latest 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker rmi ros2-jazzy:latest 
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker rmi ros2-jazzy:latest 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker rm -f ros2jazzy-tut 
+docker rmi -f ros2-jazzy:latest 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest 
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/ && docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest 
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest && docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/ && docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -e XDG_RUNTIME_DIR=/tmp/runtime-ubuntu   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest && docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/ && docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -e XDG_RUNTIME_DIR=/tmp/runtime-ubuntu   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   --rm   ros2-jazzy
+xhost +local:docker
+docker rm -f ros2jazzy-tut 2>/dev/null || true
+docker rmi -f ros2-jazzy:latest 2>/dev/null || true
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/ && docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -e XDG_RUNTIME_DIR=/tmp/runtime-ubuntu   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   --rm   ros2-jazzy
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -e XDG_RUNTIME_DIR=/tmp/runtime-ubuntu   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+egrep -c '(vmx|svm)' /proc/cpuinfo
+sudo kvm-ok
+sudo apt install cpu-checker
+sudo kvm-ok
+sudo apt -y install bridge-utils cpu-checker libvirt-clients libvirt-daemon qemu qemu-kvm
+cat /sys/hypervisor/properties/capabilities
+egrep -c ' lm ' /proc/cpuinfo
+uname -m
+apt show qemu-kvm
+apt show qemu
+man egrep
+# Check CPU supports virtualization
+egrep -c '(vmx|svm)' /proc/cpuinfo
+# Output should be > 0
+# Detailed check
+lscpu | grep Virtualization
+# Check KVM module is available
+lsmod | grep kvm
+apt info virtinst qemu-utils ovmf
+apt info virt-install virtinst qemu-utils ovmf
+sudo apt install     qemu-system-x86     qemu-utils     libvirt-daemon-system     libvirt-clients     bridge-utils     virtinst     virt-manager     ovmf
+apt info cpu-checker
+cpu-checker
+# Verify installation
+virsh --version
+qemu-system-x86_64 --version
+sudo usermod -aG kvm,libvirt $USER
+groups
+# Apply changes (or log out and back in)
+newgrp libvirt
+groups
+sudo usermod -aG kvm,libvirt $USER
+groups
+exit
+newgrp libvirt
+sudo usermod -aG kvm,libvirt $USER
+exit
+# Start libvirt daemon
+sudo systemctl start libvirtd
+# Enable on boot
+sudo systemctl enable libvirtd
+# Check status
+sudo systemctl status libvirtd
+clear
+# Start libvirt daemon
+sudo systemctl start libvirtd
+# Enable on boot
+sudo systemctl enable libvirtd
+# Check status
+sudo systemctl status libvirtd
+lsmod | grep kvm
+lscpu | grep Virtualization
+# Add your user to libvirt and kvm groups
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
+# Apply changes (or log out and back in)
+newgrp libvirt
