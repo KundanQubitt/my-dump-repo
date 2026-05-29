@@ -70,6 +70,18 @@ npm -v # Should print "11.12.1".
 ```bash
 ```
 
+unable to connect to university/office wifi  
+
+exec `ping <wifi-login-url> && ip route`  
+if ping resolves to a.b.x.x (say 172.17.17.1) and docker also uses a.b.x.x (say 172.17.0.1)  
+then you just need to change docker subnet edit `/etc/docker/daemon.json` and add
+
+```bash
+{
+  "bip": "192.168.250.1/24"
+}
+```
+
 ## git n github
 
 git
