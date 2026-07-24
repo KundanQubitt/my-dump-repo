@@ -1,0 +1,293 @@
+sudo powertop
+upower -i /org/freedesktop/UPower/devices/battery_BAT0
+htop
+top
+uname -r
+
+nvidia-smi
+
+sudo editor /usr/local/bin/prime-run #__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia VK_LAYER_NV_optimus=NVIDIA_only
+sudo chmod +x /usr/local/bin/prime-run
+
+glxinfo | grep "OpenGL renderer"
+prime-run glxinfo | grep "OpenGL renderer"
+prime-run vulkaninfo | grep deviceName # sudo apt install vulkan-tools
+lspci | grep -E "VGA|3D"
+nvcc --version
+vcc --version
+
+sudo ubuntu-drivers 
+
+
+
+
+
+xhost -SI:localuser:root
+
+
+
+
+
+sudo apt-get update && sudo apt-get install -y --no-install-recommends    ca-certificates    curl    gnupg2
+sudo apt autoremove
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg   && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list |     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' |     sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+sudo apt-get update
+export NVIDIA_CONTAINER_TOOLKIT_VERSION=1.19.0-1
+grep -R "apt_hook_ubuntu_virt" /etc/apt/apt.conf.d/
+sudo rm /etc/apt/apt.conf.d/99-ubuntu-virt.conf
+sudo dpkg --configure -a
+sudo apt --fix-broken install
+export NVIDIA_CONTAINER_TOOLKIT_VERSION=1.19.0-1
+sudo nvidia-ctk runtime configure --runtime=docker
+
+
+
+
+
+sudo apt install -y ocl-icd-opencl-dev dbus-x11 zenity #fakeroot xorriso
+sudo SKIP_PACKAGE_CHECK=1 ./DaVinci_Resolve_20.3.2_Linux.run -i
+
+cd /opt/resolve/libs
+sudo mkdir -p disabled_libs
+sudo mv libglib-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgio-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgmodule-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgobject-2.0.so* disabled_libs/ 2>/dev/null
+find /opt/resolve/libs -maxdepth 1 | grep glib
+
+prime-run /opt/resolve/bin/resolve
+QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run resolve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lspci | grep -E "VGA|3D"
+clinfo | head
+sudo apt install clinfo
+ps aux | grep resolve
+nvidia-smi
+nvidia-smi
+ps aux | grep resolve
+which prime-run
+cat /usr/local/bin/prime-run 
+sudo apt install -y nvidia-opencl-icd clinfo
+sudo nano /usr/local/bin/prime-run
+sudo apt install nvidia-opencl-icd opencl-headers clinfo
+sudo apt install -y     libnvidia-compute-595     opencl-headers     clinfo
+sudo apt-mark auto libnvidia-compute-595
+clinfo | grep -i -E "platform|device|nvidia"
+apt search xwayland
+apt search x11-utils
+sudo mv /opt/resolve/Onboarding         /opt/resolve/Onboarding.bak
+__GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run /opt/resolve/bin/resolve
+cd Downloads/davinci/
+sudo __GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run ./DaVinci_Resolve_Studio_20.3.2_Linux.run -i
+sudo __GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run DaVinci_Resolve_20.3.2_Linux.run -i
+sudo echo $HOME
+sudo __GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 prime-run $HOME/Downloads/davinci/DaVinci_Resolve_20.3.2_Linux.run -i
+sudo __GL_THREADED_OPTIMIZATIONS=0 QT_QPA_PLATFORM=xcb GDK_BACKEND=x11 SKIP_PACKAGE_CHECK=1 prime-run $HOME/Downloads/davinci/DaVinci_Resolve_20.3.2_Linux.run -i
+start-resolve
+nvidia-smi
+cd /opt/resolve/libs
+sudo mkdir -p disabled_libs
+sudo mv libglib-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgio-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgmodule-2.0.so* disabled_libs/ 2>/dev/null
+sudo mv libgobject-2.0.so* disabled_libs/ 2>/dev/null
+find /opt/resolve/libs -maxdepth 1 | grep glib
+start-resolve
+apt info nautilus-hide
+sudo apt install nautilus-hide
+ln --help
+sudo tlp setcharge 20 80 BAT0
+sudo nano /etc/systemd/system/tlp-set-charge.service
+sudo systemctl daemon-reload
+sudo systemctl enable tlp-set-charge.service
+sudo systemctl start tlp-set-charge.service
+systemctl status tlp-set-charge.service
+which tlp
+sudo nano /etc/systemd/system/tlp-set-charge.service
+sudo systemctl enable tlp-set-charge.service
+sudo systemctl daemon-reload
+sudo systemctl enable tlp-set-charge.service
+sudo systemctl start tlp-set-charge.service
+systemctl status tlp-set-charge.service
+nautilus -q
+mkdir Unity
+cd Unity/
+mkdir Hub
+cd Hub/
+mkdir Editor
+ln --help
+ln ./Dev/ ~/Documents/Dev
+ls --help
+ln -s ./Dev/ ~/Documents/Dev
+ln -s ./Dev ~/Documents/Dev
+l
+source ~/.bashrc
+l
+pwd
+ln -s ./Dev ~/Documents/Dev
+ln -s /run/media/kundan-qubitt/Qubitt/Dev ~/Documents/Dev
+sudo nano /etc/fstab
+sudo rm -rf timeshift/
+sudo rm -rf lost+found/
+python3 -m venv .venv
+sudo rm -rf timeshift/
+sudo rm -rf lost+found/
+nano prime-run
+nano $(which prime-run)
+cat Dev/_tutorials/random-guides/docker/Dockerfile 
+cat Dev/_tutorials/random-guides/docker/Dockerfile
+cat Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker run --help
+ls /dev/shm
+ls /dev/shm/lttng-ust-wait-8-1000 
+ls /dev/shm/lttng-ust-wait-8-1000/
+ls /dev/shm/lttng-ust-wait-8-1000
+cat/dev/shm/lttng-ust-wait-8-1000
+cat /dev/shm/lttng-ust-wait-8-1000
+xhost
+-xhost
+xhost --help
+man xhost
+xhost -help
+man xhost
+xhost +local:docker
+xhost
+xhost +local:docker
+id
+id -u
+id -g
+docker ps -a
+docker images
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2_ws:/ros2-jazzy_tut   -v ~/.ssh:/root/.ssh:ro   --user $(id -u):$(id -g)   ros2-jazzy
+docker ps -a
+docker --help
+docker rm -rf 177f6eee7b88
+docker rm -f 177f6eee7b88
+docker rmi -f ros2-jazzy:latest
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+
+git config list
+exit
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+cat ~/Dev/_tutorials/ros2\ Jazzy/
+cat ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker run --rm -it osrf/ros:jazzy-desktop-full bash
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+xhost +local:docker
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker rm ros2jazzy-tut 
+docker rm -f ros2jazzy-tut 
+docker --help
+docker rmi --help
+docker rmi ros2-jazzy:latest 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker rmi ros2-jazzy:latest 
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker rmi ros2-jazzy:latest 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker rm -f ros2jazzy-tut 
+docker rmi -f ros2-jazzy:latest 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest 
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/ && docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest 
+editor ~/Dev/_tutorials/ros2\ Jazzy/Dockerfile 
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest && docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/ && docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -e XDG_RUNTIME_DIR=/tmp/runtime-ubuntu   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+docker rm -f ros2jazzy-tut && docker rmi -f ros2-jazzy:latest && docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/ && docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -e XDG_RUNTIME_DIR=/tmp/runtime-ubuntu   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   --rm   ros2-jazzy
+xhost +local:docker
+docker rm -f ros2jazzy-tut 2>/dev/null || true
+docker rmi -f ros2-jazzy:latest 2>/dev/null || true
+docker build -t ros2-jazzy ~/Dev/_tutorials/ros2\ Jazzy/ && docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -e XDG_RUNTIME_DIR=/tmp/runtime-ubuntu   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   --rm   ros2-jazzy
+docker run -it   --name ros2jazzy-tut   --network host   --gpus all   --device /dev/dri   --shm-size=2g   --privileged   -e DISPLAY=$DISPLAY   -e QT_X11_NO_MITSHM=1   -e XAUTHORITY=$XAUTH   -e XDG_RUNTIME_DIR=/tmp/runtime-ubuntu   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   -v $XAUTH:$XAUTH   -v /home/kundan-qubitt/Dev/_tutorials/ros2\ Jazzy/ros2_ws:/home/ubuntu/ros2-jazzy_tut   -v ~/.ssh:/home/ubuntu/.ssh:ro   ros2-jazzy
+egrep -c '(vmx|svm)' /proc/cpuinfo
+sudo kvm-ok
+sudo apt install cpu-checker
+sudo kvm-ok
+sudo apt -y install bridge-utils cpu-checker libvirt-clients libvirt-daemon qemu qemu-kvm
+cat /sys/hypervisor/properties/capabilities
+egrep -c ' lm ' /proc/cpuinfo
+uname -m
+apt show qemu-kvm
+apt show qemu
+man egrep
+# Check CPU supports virtualization
+egrep -c '(vmx|svm)' /proc/cpuinfo
+# Output should be > 0
+# Detailed check
+lscpu | grep Virtualization
+# Check KVM module is available
+lsmod | grep kvm
+apt info virtinst qemu-utils ovmf
+apt info virt-install virtinst qemu-utils ovmf
+sudo apt install     qemu-system-x86     qemu-utils     libvirt-daemon-system     libvirt-clients     bridge-utils     virtinst     virt-manager     ovmf
+apt info cpu-checker
+cpu-checker
+# Verify installation
+virsh --version
+qemu-system-x86_64 --version
+sudo usermod -aG kvm,libvirt $USER
+groups
+# Apply changes (or log out and back in)
+newgrp libvirt
+groups
+sudo usermod -aG kvm,libvirt $USER
+groups
+exit
+newgrp libvirt
+sudo usermod -aG kvm,libvirt $USER
+exit
+# Start libvirt daemon
+sudo systemctl start libvirtd
+# Enable on boot
+sudo systemctl enable libvirtd
+# Check status
+sudo systemctl status libvirtd
+clear
+# Start libvirt daemon
+sudo systemctl start libvirtd
+# Enable on boot
+sudo systemctl enable libvirtd
+# Check status
+sudo systemctl status libvirtd
+lsmod | grep kvm
+lscpu | grep Virtualization
+# Add your user to libvirt and kvm groups
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
+# Apply changes (or log out and back in)
+newgrp libvirt

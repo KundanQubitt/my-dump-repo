@@ -17,7 +17,7 @@ sudo add-apt-repository universe && \
 sudo apt update && \
 sudo apt full-upgrade && \
 sudo apt autoremove && \
-sudo apt install linux-image-generic ubuntu-restricted-extras util-linux-extra build-essential curl extrepo ssh git libfuse2 v4l2loopback-dkms tlp tlp-rdw
+sudo apt install linux-image-generic ubuntu-restricted-extras util-linux-extra build-essential curl extrepo ssh git libfuse2 v4l2loopback-dkms libapr1 libaprutil1 libglu1-mesa #tlp tlp-rdw
 ```
 
 + set root password
@@ -34,6 +34,8 @@ sudo visudo -f /etc/sudoers.d/qubitt
   + replace `suspend` with `hibernate` in logind.conf
   + disable suspend and similar in sleep.conf
 + Setup hibernation
+  + get swap partition UUID from lsblk
+  + add "resume=UUID=x...-x...-x...-x..."
 
 ```bash
 sudo editor /etc/systemd/logind.conf
@@ -57,6 +59,7 @@ sudo ufw allow ssh
 
 + Edit .bashrc
   + also source `.git-app_update`, `.sh_aliases`, `.sh_env` in .bashrc
+  + add autocd shell opt `shopt -s autocd`
 
 ```bash
 editor ~/.bashrc

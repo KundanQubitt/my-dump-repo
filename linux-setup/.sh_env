@@ -1,3 +1,9 @@
 ## EDITOR
 export VISUAL="/usr/bin/nvim"
 export EDITOR="$VISUAL"
+
+## NVM
+export NVM_DIR="$HOME/.nvm"
+
+## PY-VEnv
+export PATH="/run/media/kundan-qubitt/Qubitt/Dev/.venv/bin:$PATH"

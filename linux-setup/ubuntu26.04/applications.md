@@ -19,7 +19,7 @@ curl -fsS https://dl.brave.com/install.sh | sh
 + Flatseal, Extension Manager
 
 ```bash
-sudo apt install flatpak gnome-software-plugin-flatpak gnome-tweaks gnome-browser-connector synaptic dconf-editor gparted timeshift fastfetch pavucontrol htop powertop
+sudo apt install flatpak gnome-software-plugin-flatpak gnome-tweaks gnome-browser-connector synaptic dconf-editor gparted timeshift fastfetch pavucontrol htop powertop #software-properties-common
 # after reboot
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager
@@ -68,6 +68,33 @@ npm -v # Should print "11.12.1".
 ## docker
 
 ```bash
+sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
+
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+newgrp docker
+sudo usermod -aG docker $USER
+
+sudo systemctl status docker
+# sudo systemctl start docker
 ```
 
 unable to connect to university/office wifi  
@@ -91,6 +118,10 @@ git config --global user.name "Kundan Qubitt"
 git config --global user.email "keshavkundan.dev@gmail.com"
 git config --global init.defaultBranch main
 ssh-keygen -t ed25519 -C "keshavkundan.dev@gmail.com"
+# eval "$(ssh-agent -s)"
+# ssh-add ~/.ssh/id_ed25519
+# cat ~/.ssh/id_ed25519.pub
+# ssh -T git@github.com
 ```
 
 github cli
@@ -158,6 +189,7 @@ sudo apt install \
 
 Add your user to libvirt and kvm groups  
 `sudo usermod -aG kvm,libvirt $USER`
+create the grp if required: `newgrp kvm`
 
 Enable libvirt daemon  
 `sudo systemctl enable --now libvirtd`

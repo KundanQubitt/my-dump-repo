@@ -42,3 +42,19 @@ update-app() {
     cd "$curDir"
     echo "$app_name: Successfully updated to $latest_version."$'\n'
 }
+
+update-nvim() { update-app "neovim/neovim" "nvim-linux-x86_64.appimage"; }
+update-pulsar() { update-app "pulsar-edit/pulsar" "Linux.Pulsar-{VERSION}.AppImage"; }
+update-drawio() { update-app "jgraph/drawio-desktop" "drawio-x86_64-{VERSION}.AppImage"; }
+update-obsidian() { update-app "obsidianmd/obsidian-releases" "Obsidian-{VERSION}.AppImage"; }
+update-arduino() { update-app "arduino/arduino-ide" "arduino-ide_{VERSION}_Linux_64bit.AppImage"; }
+update-flameshot () { update-app "flameshot-org/flameshot" "Flameshot-{VERSION}-x86_64.AppImage"; }
+
+update-git-apps() {
+    update-nvim && \
+    update-pulsar && \
+    update-drawio && \
+    update-obsidian && \
+    update-arduino && \
+    update-flameshot
+}
